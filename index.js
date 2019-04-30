@@ -16,6 +16,7 @@ const myTest = require('./projects/mytest');
     const page = await browser.newPage();
     await page.setViewport({ width: 1280, height: 800 });
     await page.setRequestInterception(false);
+    //await page.setDefaultTimeout(15000);
 
     try {
       console.log(await myTest(page));
