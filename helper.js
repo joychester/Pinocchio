@@ -27,7 +27,7 @@ async function getCustomPerfMetrics(page, markNames) {
       return item.name === mark;
     });
     if (record != undefined) {
-      perfMarkData[mark] = record['startTime'].toFixed(1);
+      perfMarkData[mark] = parseFloat(record['startTime'].toFixed(1));
     }
   });
   return perfMarkData;
@@ -44,8 +44,12 @@ const searchForChromeDevPerfMetrics = (metrics, ...dataNames) => {
 
   const extractedData = {};
   dataNames.forEach(name => {
-    extractedData[name] =
-      (getTimeFromChromePerfMetrics(metrics, name) - navigationStart).toFixed(1);
+    let duration = getTimeFromChromePerfMetrics(metrics, name) - navigationStart;
+    if (duration > 0) {
+      extractedData[name] = parseFloat(duration.toFixed(1));
+    } else {
+      extractedData[name] = 0;
+    }
   });
 
   return extractedData;
