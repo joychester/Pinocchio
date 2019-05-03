@@ -9,6 +9,7 @@ const myTest = require('./projects/mytest');
       devtools: true,
       //slowMo: 100,
       //args: ['--enable-feature=NetworkService'],
+      //args: ['--no-sandbox', '--disable-setuid-sandbox'], // just for CentOS,Running as root without --no-sandbox is not supported...
       //ignoreHTTPSErrors: true,
     });
 
