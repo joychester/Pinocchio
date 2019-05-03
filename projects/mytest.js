@@ -5,6 +5,7 @@ const {
     enableCDPPerfClient,
     printAllChromeDevPerfMetrics,
     enablePageIntercepted,
+    createPerfMetricsObj,
 } = require('../helper.js');
 const Configs = require('./configs.js');
 
@@ -71,7 +72,10 @@ async function testPage(page) {
     page, pageCustomMetrics);
 
   //combine perf metrics objects
-  let perfMetrciCombined = Object.assign(navTimings, customMetrics, firstMeaningfulPaint);
+  let testdate = {};
+  testdate['datetime'] = new Date().toISOString();
+  let perfMetrciCombined = createPerfMetricsObj(testdate, navTimings, customMetrics, firstMeaningfulPaint);
+  
   return perfMetrciCombined;
 
 }
