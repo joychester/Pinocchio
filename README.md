@@ -5,11 +5,12 @@ Page perf test by puppeteer lib
 ### How to 
 Install the puppeteer lib
 ```javascript
+npm install @elastic/elasticsearch
 npm install puppeteer
 ```
 Run the simple test:
 ```javascript
-node index.js
+node ./projectA/init_pageA_test.js
 ```
 
 PS. How to Run things in CentOS 7.0 :
