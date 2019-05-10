@@ -7,7 +7,8 @@ const GlConfigs = {
   ES_sniffOnStart: 'true',
 
   Pup_Headless: 'false',
-  Pup_devtools: 'true'
+  Pup_devtools: 'true',
+  Pup_args: ['--no-sandbox', '--disable-setuid-sandbox']
 
 }
 
