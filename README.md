@@ -1,5 +1,5 @@
 # Pinocchio
-Page perf test by puppeteer lib
+Synthetic Page perf test by puppeteer lib + ElasticSearch/Kibana
 
 
 ### How to 
