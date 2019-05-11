@@ -2,19 +2,9 @@ const pup = require('puppeteer');
 const GlConfigs = require('../global_config');
 
 async function pupInit(fn) {
-    if (!Array.isArray(GlConfigs.Pup_args)) {
-      throw "puppeteer args need to be an Array, exit now!";
-    }
-    
+    console.log("Please double check the browser configurations: \n" + GlConfigs.Pup_options);
     // return: a Promise, which resolves to browser instance.
-    const browser = await pup.launch({
-      // Set of configurable options to set on the browser.
-      headless: JSON.parse(GlConfigs.Pup_Headless || 'true'), // linux box needs to be 'true'
-      devtools: JSON.parse(GlConfigs.Pup_devtools || 'false'),
-      //slowMo: 100,
-      args: GlConfigs.Pup_args,// just for CentOS,Running as root without --no-sandbox is not supported...
-      //ignoreHTTPSErrors: true,
-    });
+    const browser = await pup.launch(GlConfigs.Pup_options);
 
     //a Promise, The Page is created in a default browser context.
     const page = await browser.newPage();
