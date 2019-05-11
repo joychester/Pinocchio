@@ -6,9 +6,14 @@ const GlConfigs = {
   ES_client_requestTimeout: 20000,
   ES_sniffOnStart: 'true',
 
-  Pup_Headless: 'false',
-  Pup_devtools: 'true',
-  Pup_args: ['--no-sandbox', '--disable-setuid-sandbox']
+  // Set of configurable options to set on the browser.
+  Pup_options: {
+    headless: false, // linux box needs to be 'true'
+    devtools: true,
+    //"slowMo": 100,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],// just for CentOS,Running as root without --no-sandbox is not supported...
+    //ignoreHTTPSErrors: true,
+  }
 
 }
 
