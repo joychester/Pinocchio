@@ -15,7 +15,8 @@ const GlConfigs = {
     //"slowMo": 100,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],// just for CentOS,Running as root without --no-sandbox is not supported...
     //ignoreHTTPSErrors: true,
-  }
+  },
+  Pup_exit: 'true' // set to false if you do not want to exit after each test
 
 }
 
