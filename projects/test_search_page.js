@@ -13,6 +13,7 @@ const Configs = require('./config.js');
 const { insertDoc } = require('../utils/es_helper.js');
 
 const Relax_ms = GlConfigs.Thread_sleep || 300;
+const User_delay = GlConfigs.User_delay || 0;
 const Test_url = Configs.SearchPage_Test_Url;
 const Page_load_indicator = Configs.SearchPage_load_indicator_step2;
 const Search_suggest_item = Configs.SearchPage_matched_keyword;
@@ -45,7 +46,7 @@ async function testPage(page) {
   Cdpclient.detach();
 
   // Step2 : Click Search suggestion item
-  await page.type('.edit', 'base', {delay: 30});
+  await page.type('.edit', 'base', {delay: User_delay});
   await page.waitFor(3000);
   await page.waitForSelector(Search_suggest_item, { visible: true, timeout: 10000 });
 
