@@ -127,7 +127,7 @@ const getCurrentDateObj = () => {
 const createPerfMetricsObj = (...metrics) => {
   let merge_objs = {};
   metrics.map( obj => {
-    for (let key of Objects.keys(obj)) {
+    for (let key of Object.keys(obj)) {
       let value = obj[key];
       if ( (typeof value === "number") && value < 0) {
         obj[key] = 0;
