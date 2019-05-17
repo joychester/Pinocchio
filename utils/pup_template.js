@@ -1,8 +1,9 @@
 const pup = require('puppeteer');
 const GlConfigs = require('../global_config');
+const Pup_exit = GlConfigs.Pup_exit || 'true';
 
 async function pupInit(fn) {
-    console.log("Please double check the browser configurations: \n" + GlConfigs.Pup_options);
+
     // return: a Promise, which resolves to browser instance.
     const browser = await pup.launch(GlConfigs.Pup_options);
 
@@ -14,13 +15,16 @@ async function pupInit(fn) {
     //await page.setDefaultTimeout(15000);
 
     try {
+      //console.log(await myTest(page));
       console.log(await fn(page));
     }
     catch(err) {
       console.log("Error Message: " + err.stack);
     }
     finally {
-      await browser.close();
+      if (JSON.parse(Pup_exit)) {
+        await browser.close();
+      }
     }
 }
 
