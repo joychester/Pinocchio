@@ -1,6 +1,7 @@
 const GlConfigs = {
   Thread_sleep: 250,
-  User_delay: 30, // simulate user type action in ms
+  User_click_delay: 30, // simulate user type action in ms
+  User_type_delay: 30, // simulate user click action in ms
 
   ES_connection_info: 'http://localhost:9200',
   ES_client_max_retry: 3,
