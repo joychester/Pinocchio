@@ -1,5 +1,6 @@
 const GlConfigs = {
   Thread_sleep: 250,
+  User_delay: 30,
 
   ES_connection_info: 'http://localhost:9200',
   ES_client_max_retry: 3,
