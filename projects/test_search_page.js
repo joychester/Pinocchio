@@ -13,7 +13,8 @@ const Configs = require('./config.js');
 const { insertDoc } = require('../utils/es_helper.js');
 
 const Relax_ms = GlConfigs.Thread_sleep || 300;
-const User_delay = GlConfigs.User_delay || 0;
+const User_type_delay = GlConfigs.User_type_delay || 0;
+const User_click_delay = GlConfigs.User_click_delay || 0;
 const Test_url = Configs.SearchPage_Test_Url;
 const Page_load_indicator = Configs.SearchPage_load_indicator_step2;
 const Search_suggest_item = Configs.SearchPage_matched_keyword;
@@ -46,13 +47,13 @@ async function testPage(page) {
   Cdpclient.detach();
 
   // Step2 : Click Search suggestion item
-  await page.type('.edit', 'base', {delay: User_delay});
+  await page.type('.edit', 'base', {delay: User_type_delay});
   await page.waitFor(3000);
   await page.waitForSelector(Search_suggest_item, { visible: true, timeout: 10000 });
 
   await enablePageIntercepted(true, page, page_time, Page_load_indicator);
   console.log("###page load started-2: " + (start_time = await page.evaluate(() => performance.now())).toFixed(1));
-  await page.click(Search_suggest_item);
+  await page.click(Search_suggest_item, {delay: User_click_delay});
   await page.waitForSelector(Page_ind_selector_step2, { visible: true, timeout: 15000 });
   await page.waitFor(Relax_ms);
   console.log("###page duration-2: " + (pageDuration['duration'] = parseFloat((page_time.end_time - start_time).toFixed(1))));
@@ -73,7 +74,7 @@ async function testPage(page) {
   let perfMetrciCombined = createPerfMetricsObj(testdate, navTimings, customMetrics, firstMeaningfulPaint, pageDuration);
 
   //save to ElasticSearch index
-  //insertDoc(Elastic_indx_name, perfMetrciCombined, Elastic_indx_type_name);
+  insertDoc(Elastic_indx_name, perfMetrciCombined, Elastic_indx_type_name);
 
   return perfMetrciCombined;
 
