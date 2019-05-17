@@ -45,7 +45,7 @@ async function testPage(page) {
   Cdpclient.detach();
 
   // Step2 : Click Search suggestion item
-  await page.type('.edit', 'base');
+  await page.type('.edit', 'base', {delay: 30});
   await page.waitFor(3000);
   await page.waitForSelector(Search_suggest_item, { visible: true, timeout: 10000 });
 
