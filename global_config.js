@@ -13,6 +13,7 @@ const GlConfigs = {
     headless: false, // linux box needs to be 'true'
     devtools: true,
     //"slowMo": 100,
+    // More advance args info: https://peter.sh/experiments/chromium-command-line-switches/
     args: ['--no-sandbox', '--disable-setuid-sandbox'],// just for CentOS,Running as root without --no-sandbox is not supported...
     //ignoreHTTPSErrors: true,
   },
