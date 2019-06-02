@@ -1,5 +1,5 @@
 # Pinocchio
-Synthetic Page perf test by puppeteer lib + ElasticSearch/Kibana .  
+Synthetic Page perf test by puppeteer lib + ElasticSearch/Kibana (lighthouse for performance score and budgets).  
 Why Pinocchio? Pinocchio is a "puppeteer" who will always tell your truth (hope so) :)
 
 ### How to 
