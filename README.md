@@ -7,6 +7,7 @@ Install the puppeteer lib
 ```javascript
 npm install @elastic/elasticsearch
 npm install puppeteer
+npm install lighthouse
 ```
 Run the simple test:
 ```javascript
